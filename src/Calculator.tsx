@@ -3,14 +3,25 @@ import React, {useState} from 'react'
 function Calculator() {
     const [formula, setFormula] = useState<string>('');
 
-    const addToFormula = (char: string) => {
+    const addToFormula = (char: string): void => {
         setFormula(formula + char)
     }
 
-    const calculate = () => {
-        setFormula(eval(formula))
+    const backspace = (): void => {
+        setFormula(formula.slice(0, -1))
     }
 
+    const calculate = (): void => {
+        try {
+            setFormula(eval(formula).toString())
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const clear = (): void => {
+        setFormula('')
+    }
 
 
     return (
@@ -19,7 +30,7 @@ function Calculator() {
             <div id="buttons">
                 <div id="buttons-grid">
                     <div className="buttons-row">
-                        <button id="clear">AC</button> 
+                        <button id="clear" onClick={clear}>AC</button> 
                         <button id="divide" onClick={() => addToFormula("/") }>&divide;</button> 
                         <button id="multiply" onClick={() => addToFormula("*")}>x</button>
                     </div>
@@ -45,7 +56,7 @@ function Calculator() {
                     </div>
                 </div>
                 <div id="buttons-sidebar">
-                    <button id="delete">&#x2326;</button>
+                    <button id="delete" onClick={backspace}>&#x2326;</button>
                     <button id="-" onClick={() => addToFormula("-")}>-</button>
                     <button id="+" onClick={() => addToFormula("+")}>+</button>
                     <button id="=" onClick={calculate}>=</button>
