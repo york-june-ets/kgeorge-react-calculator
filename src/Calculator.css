@@ -1,0 +1,38 @@
+#calculator {
+    width: 400px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: grey;
+}
+
+#screen {
+    height: 200px;
+}
+
+#buttons {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#buttons-grid {
+    flex-basis: 75%;
+}
+
+button {
+    width: 100px;
+    height: 100px;
+    font-size: 24px;
+
+}
+
+#buttons-sidebar {
+    flex-basis: 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+#equals {
+    height: 200px;
+}
+
+
