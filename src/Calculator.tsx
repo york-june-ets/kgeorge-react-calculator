@@ -7,6 +7,11 @@ function Calculator() {
         setFormula(formula + char)
     }
 
+    const calculate = () => {
+        setFormula(eval(formula))
+    }
+
+
 
     return (
         <div id="calculator">
@@ -43,7 +48,7 @@ function Calculator() {
                     <button id="delete">&#x2326;</button>
                     <button id="-" onClick={() => addToFormula("-")}>-</button>
                     <button id="+" onClick={() => addToFormula("+")}>+</button>
-                    <button id="=">=</button>
+                    <button id="=" onClick={calculate}>=</button>
                 </div>
             </div>
         </div>
